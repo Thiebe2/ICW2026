@@ -5,66 +5,126 @@
 <style>
 body {
     font-family: Arial;
-    background-color: #cdddf2;
-    }
+    background-color: #1a1a1a; /* Donkere achtergrond */
+    color: #fff;
+    margin: 0;
+}
 
-/* Style the tab */
+/* Header met menu knop */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #111;
+    padding: 10px 20px;
+}
+
+.menu-btn {
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #fff;
+}
+
+/* Verborgen menu */
 .tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
+    display: none;
+    flex-direction: column;
+    background-color: #222;
 }
 
-/* Style the buttons inside the tab */
 .tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-  font-size: 17px;
+    background-color: #222;
+    border: none;
+    color: #fff;
+    padding: 12px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 17px;
+    border-bottom: 1px solid #333;
+    transition: 0.3s;
 }
 
-/* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: #ddd;
+    background-color: #333;
 }
 
-/* Create an active/current tablink class */
 .tab button.active {
-  background-color: #ccc;
+    background-color: #555;
 }
 
-/* Style the tab content */
+/* Tab content */
 .tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
+    display: none;
+    padding: 10px 20px;
+    border-top: 1px solid #333;
 }
+
+a {
+    color: #4da6ff;
+}
+
+.glow-btn {
+  padding: 12px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #333;
+  transition: 0.3s;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.glow-btn.green:hover {
+  box-shadow: 0 0 15px #00ff00;
+  background-color: #1a1a1a;
+}
+
+.glow-btn.red:hover {
+  box-shadow: 0 0 15px #ff0000;
+  background-color: #1a1a1a;
+}
+
 </style>
 <title>Homescreen</title>
 </head>
 <body>
 
+<div class="header">
+    <h2>Belangrijke vraag</h2>
+    <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
+</div>
 
-
-<div class="tab">
+<!-- Verborgen menu -->
+<div class="tab" id="menu">
   <button class="tablinks" onclick="openCity(event, 'Home')">Home</button>
+  <button class="tablinks" onclick="openCity(event, 'Moeskops')">Testpagina</button>
   <button class="tablinks" onclick="openCity(event, 'Rik')">Rik</button>
   <button class="tablinks" onclick="openCity(event, 'Vince')">Vince</button>
   <button class="tablinks" onclick="openCity(event, 'Liza')">Liza</button>
   <button class="tablinks" onclick="openCity(event, 'Joel')">Joel</button>
   <button class="tablinks" onclick="openCity(event, 'Thiebe')">Thiebe</button>
   <button class="tablinks" onclick="openCity(event, 'Ludo')">Ludo</button>
-  <button class="tablinks" onclick="openCity(event, 'Ben')">Ben</button>
 </div>
 
-<p>Klik op een naam uit deze menu hierboven.</p>
+<p style="padding: 0 20px;">Moet ik als Princess Peach naar de 100D komen?</p>
+
+<div style="display: flex; gap: 20px; padding: 20px;">
+  <button class="glow-btn green">Ja</button>
+  <button class="glow-btn red">Nee</button>
+</div>
+
 
 <div id="Home" class="tabcontent">
+  <h3>Dit verwijst je terug naar de homepagina</h3>
+  <p>
+    Ook je leerkracht heeft <a href="index.html">een link</a> naar zijn testpagina
+  </p>
+</div>
+
+<div id="Moeskops" class="tabcontent">
   <h3>Deze webpagina wordt gemaakt door de leerlingen van 6ICW</h3>
   <p>Met Github kunnen we samenwerken aan een website. 
     Elke leerling heeft een eigen tabblad met een link naar zijn pagina.
@@ -89,12 +149,10 @@ body {
   <p>Via deze link kom je op de pagina van Liza: <a href="Liza.html">Liza's Page</a></p>
 </div>
 
-
 <div id="Joel" class="tabcontent">
   <h3>Hey</h3>
   <p>Via deze link kom je op de pagina van Joel: <a href="joel.html">Joel's Page</a></p>
 </div>
-
 
 <div id="Thiebe" class="tabcontent">
   <h3>Hey</h3>
@@ -106,10 +164,6 @@ body {
   <p>Via deze link kom je op de pagina van Ludo: <a href="ludo.html">Ludo's Page</a></p>
 </div>
 
-<div id="Ben" class="tabcontent">
-  <h3>Hello there</h3>
-  <p>Via <a href="Ben.html">deze link</a> kom je op de pagina van Ben</p>
-</div>
 
 <script>
 function openCity(evt, cityName) {
@@ -125,7 +179,13 @@ function openCity(evt, cityName) {
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+
+// Toggle menu zichtbaarheid
+function toggleMenu() {
+    const menu = document.getElementById('menu');
+    menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+}
 </script>
-   
+
 </body>
-</html> 
+</html>
